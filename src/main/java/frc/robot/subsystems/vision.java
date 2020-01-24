@@ -1,23 +1,31 @@
-//IMPORTS
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+package frc.robot.subsystems;
+
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 
+public class vision extends Subsystem{
 public void vision_start(){
 //initializing.
-NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-NetworkTableEntry tx = table.getEntry("tx");
-NetworkTableEntry ty = table.getEntry("ty");
-NetworkTableEntry ta = table.getEntry("ta");
+        final NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+        final NetworkTableEntry tx = table.getEntry("tx");
+        final NetworkTableEntry ty = table.getEntry("ty");
+        final NetworkTableEntry ta = table.getEntry("ta");
 
-//read values periodically
-double x = tx.getDouble(0.0);
-double y = ty.getDouble(0.0);
-double area = ta.getDouble(0.0);
+        // read values periodically
+        final double x = tx.getDouble(0.0);
+        final double y = ty.getDouble(0.0);
+        final double area = ta.getDouble(0.0);
 
 //post to smart dashboard periodically
-SmartDashboard.putNumber("LimelightX", x);
-SmartDashboard.putNumber("LimelightY", y);
-SmartDashboard.putNumber("LimelightArea", area);  
+Shuffleboard.getTab("Dashboard").add("LimelightX", x);
+Shuffleboard.getTab("Dashboard").add("LimelightY", y);
+Shuffleboard.getTab("Dashboard").add("LimelightArea", area);
+}
+
+    @Override
+    protected void initDefaultCommand() {
+    }
 }
