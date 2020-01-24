@@ -7,15 +7,12 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.subsystems.Config;
 import frc.robot.subsystems.DrivingTank;
 import frc.robot.subsystems.Shoot;
+import frc.robot.subsystems.ShuffleCode;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,17 +32,11 @@ public class Robot extends TimedRobot {
   public static OI oi = new OI();
   public static Config config = new Config();
   public static DrivingTank tanky = new DrivingTank();
+  public static ShuffleCode shuffly = new ShuffleCode();
   // public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
-
-  // Instantiations of commands used in Robot
-  private Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
-
-  public SendableChooser<Command> m_autoChooser;
 
   @Override
   public void robotPeriodic() {
-    CommandScheduler.getInstance().run();
   }
   @Override
   public void robotInit() {
@@ -53,8 +44,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = (Command) m_autoChooser.getSelected();
-    m_autonomousCommand.start();
   }
 
   @Override
@@ -63,14 +52,10 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
   }
 
   @Override
   public void teleopPeriodic() {
-    Scheduler.getInstance().run();
     tanky.tankDrive(oi.xbox.getY(Hand.kLeft), oi.xbox.getY(Hand.kRight));
     shorty.shooty();
   }
