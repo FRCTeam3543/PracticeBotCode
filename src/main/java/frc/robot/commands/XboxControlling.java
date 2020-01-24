@@ -14,7 +14,7 @@ public class XboxControlling extends Command {
         }
 
         if (usingArcade) {
-            Robot.tanky.arcadeDrive(OI.xbox.getY(Hand.kLeft), OI.xbox.getX(Hand.kLeft));
+            Robot.tanky.arcadeDrive(OI.xbox.getY(Hand.kLeft), -OI.xbox.getX(Hand.kLeft));
             }
         else{
             Robot.tanky.tankDrive(OI.xbox.getY(Hand.kLeft), OI.xbox.getY(Hand.kRight));
