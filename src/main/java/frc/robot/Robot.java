@@ -8,14 +8,13 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.XboxControlling;
 import frc.robot.subsystems.Config;
 import frc.robot.subsystems.DrivingTank;
-import frc.robot.subsystems.Shoot;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,7 +30,7 @@ public class Robot extends TimedRobot {
    */
   
   /// Initiating Systems ///
-  public static Shoot shorty = new Shoot();
+  public static XboxControlling control = new XboxControlling();
   public static OI oi = new OI();
   public static Config config = new Config();
   public static DrivingTank tanky = new DrivingTank();
@@ -71,8 +70,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    tanky.tankDrive(oi.xbox.getY(Hand.kLeft), oi.xbox.getY(Hand.kRight));
-    shorty.shooty();
+    control.driveswitch();
   }
 
   @Override
