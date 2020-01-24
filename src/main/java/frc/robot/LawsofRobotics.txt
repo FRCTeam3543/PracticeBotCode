@@ -1,0 +1,6 @@
+
+1. A Robot may not injure a human being or, through inaction, allow a human being to come to harm.
+
+2. A robot must obey orders given it by human beings exept where such orders would conflict with the First Law.
+
+3. A robot must protect it's own existance as long as such protection does not conflict with the First or Second Law.
