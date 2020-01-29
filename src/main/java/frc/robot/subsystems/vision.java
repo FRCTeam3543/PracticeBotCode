@@ -4,6 +4,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 
 public class vision extends Subsystem{
@@ -20,9 +21,10 @@ public void vision_start(){
         final double area = ta.getDouble(0.0);
 
 //post to smart dashboard periodically
-Shuffleboard.getTab("Dashboard").add("LimelightX", x);
-Shuffleboard.getTab("Dashboard").add("LimelightY", y);
-Shuffleboard.getTab("Dashboard").add("LimelightArea", area);
+    Shuffleboard.selectTab("Dashboard");
+    Shuffleboard.getTab("Dashboard").add("LimelightX", x).withWidget(BuiltInWidgets.k3AxisAccelerometer);
+    Shuffleboard.getTab("Dashboard").add("LimelightY", y);
+    Shuffleboard.getTab("Dashboard").add("LimelightArea", area);
 }
 
     @Override
