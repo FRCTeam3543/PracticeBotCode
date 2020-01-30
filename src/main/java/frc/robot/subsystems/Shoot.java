@@ -22,6 +22,7 @@ public class Shoot extends Subsystem {
         ShootM2.set(SmartDashboard.getNumber("Top Motor", ShootM2.get()));
         //ShootM1.set(Config.S1_SPEED);
         //ShootM2.set(Config.S2_SPEED);
+        
         /*if(isShootReady()){
             //ShootM1.set();
             //ShootM2.set(Robot.oi.xbox.getTriggerAxis(Hand.kRight));
