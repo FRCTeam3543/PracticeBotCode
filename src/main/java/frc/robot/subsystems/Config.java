@@ -1,5 +1,4 @@
 package frc.robot.subsystems;
-
 /*
 ------------------
 When naming something it has to be ALL CAPS so that the file can locate
@@ -23,8 +22,12 @@ public static final int SHOOT_1 = 0;
 public static final int SHOOT_2 = 1;
 
 /// Shooter Speed ///
-//s1 is bottom of shooter
-public static final int S1_SPEED = 10;
-//s2 is top of shooter
-public static final int S2_SPEED = 5;
+/**
+ * s1 is bottom of shooter = 0
+**/
+//public static final int S1_SPEED = 10;
+/**
+ * s2 is top of shooter = 1
+**/
+//public static final int S2_SPEED = 5;
 }

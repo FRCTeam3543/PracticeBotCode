@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.subsystems.Config;
 import frc.robot.subsystems.DrivingTank;
 import frc.robot.subsystems.Shoot;
-import frc.robot.subsystems.ShuffleCode;
+import frc.robot.ShuffleCode;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -56,8 +56,9 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    tanky.tankDrive(oi.xbox.getY(Hand.kLeft), oi.xbox.getY(Hand.kRight));
+    tanky.tankDrive(OI.xbox.getY(Hand.kLeft), OI.xbox.getY(Hand.kRight));
     shorty.shooty();
+    //shorty.shufflemyboard();
   }
 
   @Override
@@ -66,6 +67,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void testPeriodic() {
+    
   }
 
   
