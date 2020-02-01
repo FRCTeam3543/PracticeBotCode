@@ -58,7 +58,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     tanky.tankDrive(OI.xbox.getY(Hand.kLeft), OI.xbox.getY(Hand.kRight));
     shorty.shooty();
-    //shorty.shufflemyboard();
+    shorty.shufflemyboard();
   }
 
   @Override
