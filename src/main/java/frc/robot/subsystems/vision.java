@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package frc.robot.subsystems;
 
 import edu.wpi.first.networktables.NetworkTable;
@@ -32,6 +31,4 @@ public void vision_start(){
     protected void initDefaultCommand() {
     }
 }
-=======
 //currently in development.
->>>>>>> master
