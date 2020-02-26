@@ -31,6 +31,8 @@ public class XboxControlling extends Command {
 
         if (usingVision) {
             Robot.tanky.visionDrive(Config.PRECISION_DRIVE_LIMIT);
+        }else{
+            Robot.tanky.arcadeDrive(OI.xbox.getY(Hand.kLeft), -OI.xbox.getX(Hand.kLeft));
         }
     }
 
