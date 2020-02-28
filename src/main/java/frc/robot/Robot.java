@@ -54,7 +54,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    tanky.visionDrive(config.PRECISION_DRIVE_LIMIT);
+    tanky.arcadeDrive(OI.xbox.getY(Hand.kLeft), -OI.xbox.getX(Hand.kLeft));
     shorty.shooty();
     shorty.shufflemyboard();
     see.visionInit();
