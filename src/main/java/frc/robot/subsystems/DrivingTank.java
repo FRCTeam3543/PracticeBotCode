@@ -62,8 +62,10 @@ private final DifferentialDrive drive = new DifferentialDrive(Left, Right);
 
     if(x >= Config.VISION_ERROR){
       drive.arcadeDrive(adjustmentSpeed, x);
-    }
+    }else{
     SmartDashboard.putNumber("TurnAngle", x);
+      drive.arcadeDrive(OI.xbox.getY(Hand.kLeft), x);
+    }
   }
 
   public void stop() {
