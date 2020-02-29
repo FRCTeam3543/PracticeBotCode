@@ -11,15 +11,18 @@ public static final int XBOX_PORT = 0;
 
 /// Talon's ///
 /// Left Talons ///
-public static final int LEFT_FRONT_TALON = 4;
-public static final int LEFT_BACK_TALON = 3;
+public static final int LEFT_FRONT_TALON = 2;
+public static final int LEFT_BACK_TALON = 0;
 /// Right Talons ///
-public static final int RIGHT_FRONT_TALON = 2;
-public static final int RIGHT_BACK_TALON = 1;
+public static final int RIGHT_FRONT_TALON = 1;
+public static final int RIGHT_BACK_TALON = 3;
 
 /// Shooter Talons ///
 public static final int SHOOT_1 = 0;
 public static final int SHOOT_2 = 1;
+
+public static final int GYRO_PORT = 1;
+public static final double GYRO_GAIN = 1 / 20;
 
 /// Shooter Speed ///
 /**

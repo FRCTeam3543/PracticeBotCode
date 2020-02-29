@@ -23,5 +23,8 @@ pluginManagement {
             name 'frcHome'
             url frcHomeMaven
         }
+        // for the pixy2 camera
+        // maven { url 'https://nexus.otake.pw/repository/maven-public/' }
     }
+
 }
