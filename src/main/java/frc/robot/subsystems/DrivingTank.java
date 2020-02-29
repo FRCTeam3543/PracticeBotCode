@@ -1,7 +1,8 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -11,11 +12,13 @@ public class DrivingTank extends Subsystem {
 // TalonSRX
 //////
 /// Left Talons ///
-WPI_TalonSRX LeftFrontT = new WPI_TalonSRX(Config.LEFT_FRONT_TALON);
-WPI_TalonSRX LeftBackT = new WPI_TalonSRX(Config.LEFT_BACK_TALON);
+WPI_VictorSPX LeftFrontT = new WPI_VictorSPX(Config.LEFT_FRONT_TALON);
+WPI_VictorSPX LeftBackT = new WPI_VictorSPX(Config.LEFT_BACK_TALON);
 /// Right Talons ///
-WPI_TalonSRX RightFrontT = new WPI_TalonSRX(Config.RIGHT_FRONT_TALON);
-WPI_TalonSRX RightBackT = new WPI_TalonSRX(Config.RIGHT_BACK_TALON);
+WPI_VictorSPX RightFrontT = new WPI_VictorSPX(Config.RIGHT_FRONT_TALON);
+WPI_VictorSPX RightBackT = new WPI_VictorSPX(Config.RIGHT_BACK_TALON);
+
+AnalogGyro gyro = new AnalogGyro(Config.GYRO_PORT);
 
 //////
 // TalonSRX group
@@ -46,7 +49,7 @@ private final DifferentialDrive drive = new DifferentialDrive(Left, Right);
 
   /**
    * Get the value from the left stick
-   * 
+   *
    * @param xSpeed  Left side values
    * @param zRotate
    */
@@ -63,5 +66,13 @@ private final DifferentialDrive drive = new DifferentialDrive(Left, Right);
 
   }
 
+  public void driveStraight(double power) {
+    double heading = gyro.getAngle() % 360;
+    drive.arcadeDrive(power, - heading * Config.GYRO_GAIN); // drive towards heading 0
+  }
+
+  public void resetGyro() {
+    gyro.reset();
+  }
 
 }
