@@ -2,14 +2,12 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
-
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.Robot;
 
 public class DrivingTank extends Subsystem {
-
 /// Victor's ///
 /// Left Victors ///
 WPI_VictorSPX LeftFront = new WPI_VictorSPX(Config.LEFT_FRONT_VICTOR);
@@ -26,11 +24,11 @@ private SpeedControllerGroup Right = new SpeedControllerGroup(RightFront, RightB
 
   public DrivingTank() {
     super();
-
     drive = new DifferentialDrive(Left, Right);
     
-    Right.setInverted(true);
-    Left.setInverted(true);
+    //Right.setInverted(true);
+    //Left.setInverted(true);
+    
     drive.setDeadband(0.4);
     drive.setSafetyEnabled(false);
   }
@@ -52,7 +50,7 @@ private SpeedControllerGroup Right = new SpeedControllerGroup(RightFront, RightB
    * @param zRotate
    */
   public void arcadeDrive(double xSpeed, double zRotate) {
-		drive.arcadeDrive(xSpeed, zRotate, true);
+    drive.arcadeDrive(xSpeed, zRotate, true);
 	}
 
     public void stop() {
@@ -60,17 +58,16 @@ private SpeedControllerGroup Right = new SpeedControllerGroup(RightFront, RightB
     }
 
   @Override
-  protected void initDefaultCommand() {
-
-  }
+  protected void initDefaultCommand() {}
 
   public void driveStraight(double power) {
-    double heading = gyro.getAngle() % 360;
+    
+    double heading = Robot.gyro.getAngle() % 360;
     drive.arcadeDrive(power, - heading * Config.GYRO_GAIN); // drive towards heading 0
   }
 
   public void resetGyro() {
-    gyro.reset();
+    Robot.gyro.reset();
   }
 
 }

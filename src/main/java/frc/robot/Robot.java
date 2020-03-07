@@ -7,17 +7,17 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.TimedRobot;
-import frc.robot.commands.XboxControlling;
-import frc.robot.subsystems.Config;
-import frc.robot.subsystems.DrivingTank;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import java.util.logging.Logger;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.TimedRobot;
-import frc.robot.subsystems.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.XboxControlling;
+import frc.robot.subsystems.BallCamera;
+import frc.robot.subsystems.Config;
+import frc.robot.subsystems.DrivingTank;
+import frc.robot.subsystems.TargetCamera;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,7 +28,7 @@ import frc.robot.subsystems.*;
  */
 public class Robot extends TimedRobot {
   public static final Logger LOG = Logger.getLogger("Robot");
-
+  public static AnalogGyro gyro;
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.

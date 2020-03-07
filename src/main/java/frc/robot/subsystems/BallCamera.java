@@ -1,8 +1,6 @@
 package frc.robot.subsystems;
 
-import org.opencv.core.Core;
 import org.opencv.core.Mat;
-import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
@@ -88,17 +86,6 @@ public class BallCamera {
 				throw new IllegalArgumentException("Input to desaturate must have 1, 3, or 4 channels");
         }
         return output;
-	}
-
-    private Mat hsvThreshold(Mat input) {
-        Mat out = new Mat();
-        double[] hue = {0.0, 163.1918505942275};
-		double[] sat = {0.0, 255.0};
-		double[] val = {190.3327338129496, 255.0};
-
-        Imgproc.cvtColor(input, out, Imgproc.COLOR_BGR2HSV);
-        Core.inRange(out, new Scalar(hue[0], sat[0], val[0]), new Scalar(hue[1], sat[1], val[1]), out);
-        return out;
     }
 
 }
