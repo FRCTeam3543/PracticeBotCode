@@ -5,7 +5,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import frc.robot.Robot;
 
 public class DrivingTank extends Subsystem {
 /// Victor's ///
@@ -24,13 +23,15 @@ private SpeedControllerGroup Right = new SpeedControllerGroup(RightFront, RightB
 
   public DrivingTank() {
     super();
-    drive = new DifferentialDrive(Left, Right);
-    
-    //Right.setInverted(true);
-    //Left.setInverted(true);
+    Right.setInverted(true);
+    Left.setInverted(true);
     
     drive.setDeadband(0.4);
     drive.setSafetyEnabled(false);
+
+    drive = new DifferentialDrive(Left, Right);
+    
+   
   }
 
   /**
@@ -59,15 +60,5 @@ private SpeedControllerGroup Right = new SpeedControllerGroup(RightFront, RightB
 
   @Override
   protected void initDefaultCommand() {}
-
-  public void driveStraight(double power) {
-    
-    double heading = Robot.gyro.getAngle() % 360;
-    drive.arcadeDrive(power, - heading * Config.GYRO_GAIN); // drive towards heading 0
-  }
-
-  public void resetGyro() {
-    Robot.gyro.reset();
-  }
 
 }
