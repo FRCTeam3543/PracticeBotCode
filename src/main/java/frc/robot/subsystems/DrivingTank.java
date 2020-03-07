@@ -30,8 +30,6 @@ private SpeedControllerGroup Right = new SpeedControllerGroup(RightFront, RightB
     drive.setSafetyEnabled(false);
 
     drive = new DifferentialDrive(Left, Right);
-    
-   
   }
 
   /**
