@@ -19,4 +19,7 @@ public static final int RIGHT_BACK_VICTOR = 3;
 
 public static final int GYRO_PORT = 1;
 public static final double GYRO_GAIN = 1 / 20;
+
+public static final int JOYSTICK1_PORT = 0;
+public static final int JOYSTICK2_PORT = 1;
 }
