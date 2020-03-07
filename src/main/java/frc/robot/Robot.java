@@ -7,12 +7,10 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.TimedRobot;
+import frc.robot.commands.XboxControlling;
 import frc.robot.subsystems.Config;
 import frc.robot.subsystems.DrivingTank;
-import frc.robot.subsystems.Shoot;
-import frc.robot.ShuffleCode;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,11 +26,10 @@ public class Robot extends TimedRobot {
    */
   
   /// Initiating Systems ///
-  public static Shoot shorty = new Shoot();
+  public static XboxControlling smash = new XboxControlling();
   public static OI oi = new OI();
   public static Config config = new Config();
   public static DrivingTank tanky = new DrivingTank();
-  public static ShuffleCode shuffly = new ShuffleCode();
   // public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
 
   @Override
@@ -56,9 +53,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    tanky.tankDrive(OI.xbox.getY(Hand.kLeft), OI.xbox.getY(Hand.kRight));
-    shorty.shooty();
-    shorty.shufflemyboard();
+    smash.driveswitch();
   }
 
   @Override

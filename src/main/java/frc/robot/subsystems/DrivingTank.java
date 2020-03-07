@@ -1,33 +1,35 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class DrivingTank extends Subsystem {
-//////
-// TalonSRX
-//////
-/// Left Talons ///
-WPI_TalonSRX LeftFrontT = new WPI_TalonSRX(Config.LEFT_FRONT_TALON);
-WPI_TalonSRX LeftBackT = new WPI_TalonSRX(Config.LEFT_BACK_TALON);
-/// Right Talons ///
-WPI_TalonSRX RightFrontT = new WPI_TalonSRX(Config.RIGHT_FRONT_TALON);
-WPI_TalonSRX RightBackT = new WPI_TalonSRX(Config.RIGHT_BACK_TALON);
 
-//////
-// TalonSRX group
-//////
-private final SpeedControllerGroup Left = new SpeedControllerGroup(LeftFrontT, LeftBackT);
-private final SpeedControllerGroup Right = new SpeedControllerGroup(RightFrontT, RightBackT);
+/// Victor's ///
+/// Left Victors ///
+WPI_VictorSPX LeftFront = new WPI_VictorSPX(Config.LEFT_FRONT_VICTOR);
+WPI_VictorSPX LeftBack = new WPI_VictorSPX(Config.LEFT_BACK_VICTOR);
+/// Right Victors ///
+WPI_VictorSPX RightFront = new WPI_VictorSPX(Config.RIGHT_FRONT_VICTOR);
+WPI_VictorSPX RightBack = new WPI_VictorSPX(Config.RIGHT_BACK_VICTOR);
 
-private final DifferentialDrive drive = new DifferentialDrive(Left, Right);
+private DifferentialDrive drive;
+
+private SpeedControllerGroup Left = new SpeedControllerGroup(LeftFront, LeftBack);
+private SpeedControllerGroup Right = new SpeedControllerGroup(RightFront, RightBack);
+
 
   public DrivingTank() {
     super();
 
+    drive = new DifferentialDrive(Left, Right);
+    
     Right.setInverted(true);
     Left.setInverted(true);
     drive.setDeadband(0.4);
