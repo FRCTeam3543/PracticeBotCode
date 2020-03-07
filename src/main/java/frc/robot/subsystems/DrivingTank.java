@@ -1,10 +1,9 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
-import edu.wpi.first.wpilibj.SpeedController;
+
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -48,7 +47,7 @@ private SpeedControllerGroup Right = new SpeedControllerGroup(RightFront, RightB
 
   /**
    * Get the value from the left stick
-   * 
+   *
    * @param xSpeed  Left side values
    * @param zRotate
    */
@@ -65,5 +64,13 @@ private SpeedControllerGroup Right = new SpeedControllerGroup(RightFront, RightB
 
   }
 
+  public void driveStraight(double power) {
+    double heading = gyro.getAngle() % 360;
+    drive.arcadeDrive(power, - heading * Config.GYRO_GAIN); // drive towards heading 0
+  }
+
+  public void resetGyro() {
+    gyro.reset();
+  }
 
 }

@@ -17,4 +17,6 @@ public static final int LEFT_BACK_VICTOR = 0;
 public static final int RIGHT_FRONT_VICTOR = 1;
 public static final int RIGHT_BACK_VICTOR = 3;
 
+public static final int GYRO_PORT = 1;
+public static final double GYRO_GAIN = 1 / 20;
 }
